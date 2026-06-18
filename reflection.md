@@ -4,9 +4,18 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
+- The hints are backwards (tells you to guess higher when you should guess lower and vice versa)
+- You start out with one less guess than you're supposed to (i.e., for any playing difficulty, it shows that you've already used an attempt in the developer debug section of the page for fresh instances of the app)
+- You're unable to start a new game using the "New Game" button at the bottom of the page once you complete a game
+- The score and history for a game don't reset when you start a new game, according to the developer debug section of the page
+- You can change the playing difficulty for the game you're currently playing mid-game just by changing the difficulty dropdown in the left panel of the page. This can result in you having zero or negative attempts for playing modes that have less allowed attempts than the one you were originally playing in (i.e., if you switched over to hard mode after you had already started the game in normal mode and used up 6 guesses, the app would show you that you have -1 attempts left).
+- The secret number is not confined by the valid guessing ranges shown in the left panel of the page for the easy and hard playing difficulties
+	- The valid guessing range for easy mode in the left panel: 1 to 20
+	- The valid guessing range for hard mode in the left panel: 1 to 50
+	- The secret number has been observed to fall outside of the ranges above while playing on easy or hard mode
+- The blue banner at the top of the page also does not update to reflect the ranges shown above when playing on easy or hard mode
+- The app lets you guess outside of the valid guessing range (e.g., you can guess outside of the valid guessing range of 1 <= n <= 100 for the normal playing difficulty)
+- If you guess a number higher than the secret number when you have an even number of attempts left, your score goes up by 5 points, instead of down by 5 points
 
 **Bug Reproduction Log**
 
@@ -14,10 +23,12 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
-
+| Guess: 30, secret: 87 | Hint: "Go HIGHER!" | Hint: "Go LOWER!" | None |
+| Guess: 115, range: 1 - 100 | Invalid guess | Valid guess | None |
+| Start a new instance of the app | Attempts used: 0 | Attempts used: 1 | None |
+| Click "New Game" button on win or lose | App starts new game | App changes banner at the bottom of the screen once, but doesn't start new game | None |
+| Click "New Game" button before win or lose | Score and guess history reset | Score and guess history don't reset | None |
+| Guess: 50, secret: 34, attempts left: 6 | Score -= 5 | Score += 5 | None |
 ---
 
 ## 2. How did you use AI as a teammate?

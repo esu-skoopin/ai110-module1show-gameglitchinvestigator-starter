@@ -34,16 +34,23 @@ Document at least 3 bugs you found. Add rows as needed.
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
+
+The only AI tool I used to work on this project was the Claude CLI tool.
+
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
+
+An example of a suggestion that Claude gave that was correct was the one that it gave for fixing the backwards hints bug. It correctly identified that the code was returning the right result in the first part of the tuple (i.e., "Too High" or "Too Low"), but was returning the wrong hint message in the second part of the tuple (i.e., "📈 Go HIGHER!" or "📉 Go LOWER!") and applied the correct fix to fix that issue. I verified that the fix Claude applied was correct by visually confirming in the UI that the hints were correct when I guessed higher/lower than the secret number.
+
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+
+Claude didn't really suggest anything incorrect, to my knowledge, while I was working on this project, but I did ask it to tweak one of its fixes in the `test_game_logic.py`. It initially changed the assert for each test case to use `in` instead of `==` which I personally didn't see a whole lot of point in doing (doesn't matter too much for use cases like this that only involve relatively short strings, but `in` is slower than `==`), so I asked it to change it back to using `==`.
 
 ---
 
 ## 3. Debugging and testing your fixes
 
 - How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
+- Describe at least one test you ran (manual or using pytest) and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
 
 ---

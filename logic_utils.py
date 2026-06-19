@@ -30,7 +30,7 @@ def check_guess(guess, secret):
     if guess == secret:
         return "Win", "🎉 Correct!"
     
-	# FIX: Fixed backwards hints bug using the "accepts edits" permission mode
+	# FIX: Fixed backwards hints bug using the Claude Code CLI tool in "accepts edits" permission mode
     try:
         if guess > secret:
             return "Too High", "📉 Go LOWER!"

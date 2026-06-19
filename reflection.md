@@ -50,8 +50,16 @@ Claude didn't really suggest anything incorrect, to my knowledge, while I was wo
 ## 3. Debugging and testing your fixes
 
 - How did you decide whether a bug was really fixed?
+
+I decided whether the bugs I decided to tackle were really fixed by first looking at the diff to see if the changes that were made made sense to me and then by verifying that the fix works in the UI for the application.
+
 - Describe at least one test you ran (manual or using pytest) and what it showed you about your code.
+
+Running the preexisting tests in `test_game_logic.py` revealed that some issues existed in the provided tests, as well. Each of the three preexisting tests that test `check_guess()` failed even though the fix for the backwards hints bug had already been enacted and verified at that point. Upon closer inspection, it was revealed that the reason why the tests were failing was because `check_guess()` returns a tuple and each of those tests was trying to assert that tuple return value from `check_guess()` against a string.
+
 - Did AI help you design or understand any tests? How?
+
+Yes, like I outlined above, working with AI did help me understand the preexisting tests in `test_game_logic.py` better. Not only did Claude bring the type mismatch in the asserts for each of the tests to my attention, but it also incidentally taught me the syntax for multi-variable assignment in Python (i.e., `var_name, _ = function_that_returns_a_tuple()`) which I was not familiar with prior to working on this project.
 
 ---
 

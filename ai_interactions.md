@@ -82,8 +82,7 @@ def test_number_below_valid_range_rejected():
     ok, _, err = parse_guess(str(low - 1), low, high)
     assert ok == False
     assert err == out_of_range_error
-```
-```
+
 def test_number_above_valid_range_rejected():
     ok, _, err = parse_guess(str(high + 1), low, high)
     assert ok == False

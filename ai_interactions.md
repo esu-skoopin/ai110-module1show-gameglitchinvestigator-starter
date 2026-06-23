@@ -26,11 +26,37 @@
 
 > Document how you used AI to help generate or improve tests.
 
-| Edge Case | Prompt Used | AI-Suggested Test | Did It Pass? | Your Reasoning |
-|-----------|-------------|-------------------|--------------|----------------|
-| | | | | |
-| | | | | |
-| | | | | |
+This is the prompt I used to generate tests for all the edge cases below:
+
+> This game handles the use case when a user tries to submit a string as a guess, but that may not be enough. Consider whether any other kinds of user inputs (e.g., negative numbers, decimals or extremely large values) could still break this game.
+>
+> Implement ways to handle such inputs gracefully, then generate a suite of pytest tests in tests/test_game_logic.py to ensure the new logic for handling extraordinary inputs works as expected.
+
+<table>
+	<tr>
+		<th>Edge Case</th>
+		<th>Prompt Used</th>
+		<th>AI-Suggested Test</th>
+		<th>Did It Pass?</th>
+		<th>Your Reasoning</th>
+	</tr>
+	<tr>
+		<td>User input is a negative number</td>
+		<td>Prompt above</td>
+		<td>
+
+```
+def test_decimal_input_rejected():
+	ok, _, err = parse_guess("3.7", low, high)
+	assert ok == False
+	assert err == "Please enter a whole number."
+```
+
+		</td>
+		<td>Yes</td>
+		<td>My reasoning</td>
+	</tr>
+</table>
 
 ---
 

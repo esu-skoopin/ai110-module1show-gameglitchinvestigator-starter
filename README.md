@@ -25,19 +25,29 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- Describe the game's purpose.
+
+	This application is intended to be a number guessing game wherein the user's goal is to guess the secret number in the provided number of attempts.
+
+- Detail which bugs you found.
+
+	I found a lot of bugs, all of which are detailed in section 1 of `reflection.md`. Two of the bugs I found are as follows:
+
+	1. The hints shown in the application are backwards (i.e., tells the user to guess higher when they should actually guess lower and vice versa)
+	2. You can't start a new game using the "New Game" button at the bottom of the page once you complete a game
+
+- Explain what fixes you applied.
+
+	I fixed both of the bugs detailed above.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. User submits a guess
+2. Game displays correct feedback based on user's guess if user has hints enabled (i.e., either "📉 Go LOWER!" if the user's guess is too high or "📈 Go HIGHER!" if the user's guess is too low)
+3. Game ends after either the user correctly guesses the secret number or the user runs out of attempts
+4. User is able to start a new game by clicking the "New Game" button at the bottom of the application
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 

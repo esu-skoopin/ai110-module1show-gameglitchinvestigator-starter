@@ -35,15 +35,15 @@ Document at least 3 bugs you found. Add rows as needed.
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
 
-The only AI tool I used to work on this project was the Claude CLI tool.
+	The only AI tool I used to work on this project was the Claude CLI tool.
 
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 
-An example of a suggestion that Claude gave that was correct was the one that it gave for fixing the backwards hints bug. It correctly identified that the code was returning the right result in the first part of the tuple (i.e., "Too High" or "Too Low"), but was returning the wrong hint message in the second part of the tuple (i.e., "📈 Go HIGHER!" or "📉 Go LOWER!") and applied the correct fix to fix that issue. I verified that the fix Claude applied was correct by visually confirming in the UI that the hints were correct when I guessed higher/lower than the secret number.
+	An example of a suggestion that Claude gave that was correct was the one that it gave for fixing the backwards hints bug. It correctly identified that the code was returning the right result in the first part of the tuple (i.e., "Too High" or "Too Low"), but was returning the wrong hint message in the second part of the tuple (i.e., "📈 Go HIGHER!" or "📉 Go LOWER!") and applied the correct fix to fix that issue. I verified that the fix Claude applied was correct by visually confirming in the UI that the hints were correct when I guessed higher/lower than the secret number.
 
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
-Claude didn't really suggest anything incorrect, to my knowledge, while I was working on this project, but I did ask it to tweak one of its fixes in the `test_game_logic.py`. It initially changed the assert for each test case to use `in` instead of `==` which I personally didn't see a whole lot of point in doing (doesn't matter too much for use cases like this that only involve relatively short strings, but `in` is slower than `==`), so I asked it to change it back to using `==`.
+	Claude didn't really suggest anything incorrect, to my knowledge, while I was working on this project, but I did ask it to tweak one of its fixes in the `test_game_logic.py`. It initially changed the assert for each test case to use `in` instead of `==` which I personally didn't see a whole lot of point in doing (doesn't matter too much for use cases like this that only involve relatively short strings, but `in` is slower than `==`), so I asked it to change it back to using `==`.
 
 ---
 
@@ -51,15 +51,15 @@ Claude didn't really suggest anything incorrect, to my knowledge, while I was wo
 
 - How did you decide whether a bug was really fixed?
 
-I decided whether the bugs I decided to tackle were really fixed by first looking at the diff to see if the changes that were made made sense to me and then by verifying that the fix works in the UI for the application.
+	I decided whether the bugs I decided to tackle were really fixed by first looking at the diff to see if the changes that were made made sense to me and then by verifying that the fix works in the UI for the application.
 
 - Describe at least one test you ran (manual or using pytest) and what it showed you about your code.
 
-Running the preexisting tests in `test_game_logic.py` revealed that some issues existed in the provided tests, as well. Each of the three preexisting tests that test `check_guess()` failed even though the fix for the backwards hints bug had already been enacted and verified at that point. Upon closer inspection, it was revealed that the reason why the tests were failing was because `check_guess()` returns a tuple and each of those tests was trying to assert that tuple return value from `check_guess()` against a string.
+	Running the preexisting tests in `test_game_logic.py` revealed that some issues existed in the provided tests, as well. Each of the three preexisting tests that test `check_guess()` failed even though the fix for the backwards hints bug had already been enacted and verified at that point. Upon closer inspection, it was revealed that the reason why the tests were failing was because `check_guess()` returns a tuple and each of those tests was trying to assert that tuple return value from `check_guess()` against a string.
 
 - Did AI help you design or understand any tests? How?
 
-Yes, like I outlined above, working with AI did help me understand the preexisting tests in `test_game_logic.py` better. Not only did Claude bring the type mismatch in the asserts for each of the tests to my attention, but it also incidentally taught me the syntax for multi-variable assignment in Python (i.e., `var_name, _ = function_that_returns_a_tuple()`) which I was not familiar with prior to working on this project.
+	Yes, like I outlined above, working with AI did help me understand the preexisting tests in `test_game_logic.py` better. Not only did Claude bring the type mismatch in the asserts for each of the tests to my attention, but it also incidentally taught me the syntax for multi-variable assignment in Python (i.e., `var_name, _ = function_that_returns_a_tuple()`) which I was not familiar with prior to working on this project.
 
 ---
 

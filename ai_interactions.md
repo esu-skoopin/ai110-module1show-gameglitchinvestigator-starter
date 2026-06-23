@@ -43,7 +43,23 @@ This is the prompt I used to generate tests for all the edge cases below:
 	<tr>
 		<td>User input is a negative number</td>
 		<td>Prompt above</td>
-		<td>
+<td>
+
+```
+def test_negative_number_rejected():
+    ok, _, err = parse_guess("-5", low, high)
+    assert ok == False
+    assert err == out_of_range_error
+```
+
+</td>
+		<td>Yes</td>
+		<td>Test case was chosen to help cover bases for most common kinds of unexpected user input</td>
+	</tr>
+	<tr>
+		<td>User input is a decimal</td>
+		<td>Prompt above</td>
+<td>
 
 ```
 def test_decimal_input_rejected():
@@ -52,9 +68,31 @@ def test_decimal_input_rejected():
 	assert err == "Please enter a whole number."
 ```
 
-		</td>
+</td>
 		<td>Yes</td>
-		<td>My reasoning</td>
+		<td>Test case was chosen to help cover bases for most common kinds of unexpected user input</td>
+	</tr>
+	<tr>
+		<td>User input is outside of valid guessing range</td>
+		<td>Prompt above</td>
+<td>
+
+```
+def test_number_below_valid_range_rejected():
+    ok, _, err = parse_guess(str(low - 1), low, high)
+    assert ok == False
+    assert err == out_of_range_error
+```
+```
+def test_number_above_valid_range_rejected():
+    ok, _, err = parse_guess(str(high + 1), low, high)
+    assert ok == False
+    assert err == out_of_range_error
+```
+
+</td>
+		<td>Yes</td>
+		<td>Test case was chosen to help cover bases for most common kinds of unexpected user input</td>
 	</tr>
 </table>
 

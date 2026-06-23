@@ -67,11 +67,21 @@ Document at least 3 bugs you found. Add rows as needed.
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
+	Reruns are a feature built into Streamlit that essentially reruns the entire main script (in this case, app.py) every time the user interacts with anything (e.g., when a user clicks on a button, types, etc.). Session state is a dictionary that helps us persist variables between reruns for Streamlit applications.
+
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
+	- This could be a testing habit, a prompting strategy, or a way you used Git.
+	
+	One practice I took away from this project that I want to reuse in future labs and projects is ensuring that the model and effort level I'm using is appropriate for the task at hand. I discovered while working on this project that the default model for Claude Code is Opus and that the default effort level is "high." Upon further research, it seems as though using Claude Sonnet on "medium" effort level is sufficient for most everyday coding use cases.
+
 - What is one thing you would do differently next time you work with AI on a coding task?
+
+	Something I would do differently next time I work with AI on a coding task (specifically next time I work with Claude Code) is to make sure I add a CLAUDE.md to my project earlier on. Before I added a CLAUDE.md file to this project, Claude kept deleting the `# FIX` comments I made in various project files (comments I made to document previous bug fixes I made with Claude as a collaborator) during file editing. This was counterproductive since I wanted to keep those comments. After adding a CLAUDE.md file that explicitly instructed Claude only to delete `# FIXME` comments and no other types of comments, Claude stopped haphazardly deleting comments.
+
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+	One of the most interesting things I noticed while completing this project is all the little ways in which AI implemented the code differently than I would've (e.g., using `in` instead of `==` or adding optional arguments where I personally would've used required ones instead). While none of the differences were overtly "wrong," per se, I do think letting the AI do whatever it wants without any supervision could lead to more serious problems down the line.
